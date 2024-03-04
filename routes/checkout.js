@@ -30,7 +30,6 @@ router.post('/createOrder/:orderId', async function (req, res) {
                 cancelUrl: `${LINEPAY_RETURN_HOST}${LINEPAY_RETURN_CANCEL_URL}`
             }
         }
-        console.log(linePayBody);
 
         const redirectUrl = await linePayService.requestApi(linePayBody);
         res.redirect(redirectUrl);
