@@ -5,10 +5,16 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <%= order.orderId %>
+    <%= order.id %>
     <%= order.amount %>
-    <%= order.packages[0].id %>
-    <form action="/createOrder/<%= order.orderId %>" method="post">
+    <% order.orderDetails.forEach((item) => { %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.price %></td>
+      </tr>
+    <% }); %>
+    <form action="/createOrder/<%= order.id %>" method="post">
         <button type="submit">送出表單</button>
     </form>
   </body>

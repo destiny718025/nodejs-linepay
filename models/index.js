@@ -36,6 +36,11 @@ Object.keys(db).forEach(modelName => {
     db[modelName].associate(db);
   }
 });
+sequelize.models.order.hasMany(sequelize.models.orderDetail, {
+  foreignKey: {
+    name: 'order_id'
+  }
+});
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
